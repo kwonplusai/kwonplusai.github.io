@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 140 }}">
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:description" content="{{ page.excerpt | default: site.description | strip_html | strip_newlines | truncate: 140 }}">
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta name="theme-color" content="#fbf7ee">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpolygon points='20,2 36,11 36,29 20,38 4,29 4,11' fill='%23E39508'/%3E%3Cpath d='M14 12v16M14 20l8-8M14 20l8 8' stroke='%23fff' stroke-width='3' stroke-linecap='round' fill='none'/%3E%3Cpath d='M27 16v8M23 20h8' stroke='%23fff' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="hg" x1="0" y1="0" x2="0.6" y2="1"><stop offset="0" stop-color="#E39508"/><stop offset="1" stop-color="#9C5806"/></linearGradient>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <nav>
+    <a class="mark" href="{{ '/' | relative_url }}" aria-label="Kwon+Ai 처음으로">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="url(#hg)"/><path d="M14 12v16M14 20l8-8M14 20l8 8" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/><path d="M27 16v8M23 20h8" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/></svg>
+      <span>Kwon<span class="p">+Ai</span></span>
+    </a>
+    <ul>
+      <li><a href="{{ '/#games' | relative_url }}">게임</a></li>
+      <li><a href="{{ '/blog/' | relative_url }}">소식</a></li>
+      <li><a href="{{ '/#studio' | relative_url }}">소개</a></li>
+      <li><a href="{{ '/#contact' | relative_url }}">문의</a></li>
+    </ul>
+  </nav>
+</div>
+
+{{ content }}
+
+<footer>
+  <div class="wrap">
+    <span>© {{ site.time | date: "%Y" }} Kwon+Ai</span>
+    <ul>
+      <li><a href="https://honeycomb-893c5.web.app/privacy" target="_blank" rel="noopener">개인정보 처리방침</a></li>
+      <li><a href="https://honeycomb-893c5.web.app/terms" target="_blank" rel="noopener">이용약관</a></li>
+      <li><a href="https://honeycomb-893c5.web.app/delete-account" target="_blank" rel="noopener">계정 삭제 안내</a></li>
+    </ul>
+  </div>
+</footer>
+<script src="{{ '/assets/site.js' | relative_url }}"></script>
+</body>
+</html>

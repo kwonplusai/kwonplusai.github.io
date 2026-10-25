@@ -1,0 +1,12 @@
+# Kwon+Ai 사이트 설정
+title: Kwon+Ai
+description: 손에 오래 남는 작은 게임을 만드는 인디 게임 스튜디오
+lang: ko
+timezone: Asia/Seoul
+contact_email: durihan7901@gmail.com
+# 저장소 이름이 '아이디.github.io'면 비워 두고,
+# 다른 이름(예: kwonai-site)이면 "/kwonai-site" 처럼 적어요.
+baseurl: ""
+permalink: /news/:year/:month/:day/:title/
+markdown: kramdown
+exclude: [README.md]

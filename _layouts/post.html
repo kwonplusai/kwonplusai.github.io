@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<article class="post wrap">
+  <div class="meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y.%m.%d" }}</time>{% if page.category %} · {{ page.category }}{% endif %}</div>
+  <h1>{{ page.title }}</h1>
+  <div class="body">{{ content }}</div>
+  <a class="back" href="{{ '/blog/' | relative_url }}">← 소식 전체 보기</a>
+</article>

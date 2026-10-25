@@ -1,0 +1,19 @@
+---
+layout: default
+title: 소식
+---
+<section style="padding-top:40px">
+  <div class="wrap">
+    <div class="head">
+      <h2>소식</h2>
+      <span class="eyebrow">News &amp; devlog</span>
+    </div>
+    {% if site.posts.size > 0 %}
+    <ul class="news">
+      {% for post in site.posts %}
+      <li><a href="{{ post.url | relative_url }}"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y.%m.%d" }}</time><strong>{{ post.title }}</strong><span>{{ post.summary | default: post.excerpt | strip_html | strip_newlines | truncate: 90 }}</span></a></li>
+      {% endfor %}
+    </ul>
+    {% else %}<p class="empty">아직 올린 소식이 없어요.</p>{% endif %}
+  </div>
+</section>
