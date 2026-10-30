@@ -6,6 +6,7 @@ timezone: Asia/Seoul
 contact_email: durihan7901@gmail.com
 # 저장소 이름이 '아이디.github.io'면 비워 두고,
 # 다른 이름(예: zestloom-site)이면 "/zestloom-site" 처럼 적어요.
+url: "https://zestloomlab.com"
 baseurl: ""
 permalink: /news/:year/:month/:day/:title/
 markdown: kramdown

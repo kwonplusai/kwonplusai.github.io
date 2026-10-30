@@ -1,4 +1,6 @@
-# Zestloom 홈페이지 (GitHub Pages)
+# Zestloom Lab 홈페이지 (GitHub Pages)
+
+주소: https://zestloomlab.com (저장소 zestloomlab/zestloomlab.github.io)
 
 ## 올리는 법
 1. GitHub에서 저장소를 만들어요. 이름을 `조직이름.github.io`로 하면 주소가 `https://조직이름.github.io`가 돼요.
@@ -30,7 +32,7 @@ GitHub 웹에서 `Add file → Create new file`로 바로 써도 돼요. 저장�
 1. 저장소 Settings → Pages → Custom domain에 `zestloomlab.com` 입력 → Save
 2. 가비아 DNS 관리에 레코드 추가
    - A `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - CNAME `www` → `조직이름.github.io.`
+   - CNAME `www` → `zestloomlab.github.io.`
 3. DNS 확인이 끝나면(몇 분~하루) Enforce HTTPS 켜기
 
 ## 파일 구성
