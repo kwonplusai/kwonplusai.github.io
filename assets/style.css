@@ -3,18 +3,18 @@ body{margin:0}
 
 /* Zestloom — 먹색 Z와 주황 실. 히어로는 베틀처럼 엮인 실, 게임·소식·소개·문의 */
 :root{
-  --bg:#f8f7fa; --surface:#ffffff; --ink:#1F1B2D; --muted:#625c72; --line:#e3e0ea;
-  --thread:#EA580C; --thread-deep:#c2410c; --cell:#efedf3;
+  --bg:#FAF7F2; --surface:#ffffff; --ink:#1F1B2D; --muted:#655e6e; --line:#e8e2d8;
+  --thread:#EA580C; --thread-deep:#c2410c; --cell:#f1ece3; --zest:#1F1B2D;
   --display:"Bricolage Grotesque","IBM Plex Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;
   --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#15121e; --surface:#1e1a2a; --ink:#eeebf5; --muted:#a39db3; --line:#2f2a3d;
-  --thread:#fb7a2e; --thread-deep:#fb923c; --cell:#24202f; color-scheme:dark}}
+  --bg:#1F1B2D; --surface:#28233a; --ink:#FAF7F2; --muted:#aaa3b8; --line:#363049;
+  --thread:#FB923C; --thread-deep:#FB923C; --cell:#2b2640; --zest:#FB923C; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#15121e; --surface:#1e1a2a; --ink:#eeebf5; --muted:#a39db3; --line:#2f2a3d;
-  --thread:#fb7a2e; --thread-deep:#fb923c; --cell:#24202f; color-scheme:dark}
+  --bg:#1F1B2D; --surface:#28233a; --ink:#FAF7F2; --muted:#aaa3b8; --line:#363049;
+  --thread:#FB923C; --thread-deep:#FB923C; --cell:#2b2640; --zest:#FB923C; color-scheme:dark}
 
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font:16px/1.7 var(--body);word-break:keep-all}
@@ -30,8 +30,8 @@ h1,h2,h3{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;l
 /* nav */
 nav{display:flex;justify-content:space-between;align-items:center;padding-block:20px;gap:16px;flex-wrap:wrap}
 .mark{display:flex;align-items:center;gap:8px;text-decoration:none;font:400 22px/1 var(--display);letter-spacing:-.02em;color:var(--ink)}
-.mark b{font-weight:800}
-.mark svg{width:30px;height:30px}
+.mark b{font-weight:800;color:var(--zest)}
+.mark svg{width:36px;height:36px;margin:-3px -2px}
 nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:15px}
 nav ul a{text-decoration:none;color:var(--muted)}
 nav ul a:hover{color:var(--ink)}
@@ -41,7 +41,7 @@ nav ul a:hover{color:var(--ink)}
 #field{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hero .wrap{position:relative;padding-block:72px 84px;pointer-events:none}
 .hero h1{font-size:clamp(60px,14vw,140px);letter-spacing:-.045em;line-height:.95;font-weight:400}
-.hero h1 b{font-weight:800}
+.hero h1 b{font-weight:800;color:var(--zest)}
 .hero .read{margin-top:10px;font:500 13px var(--mono);color:var(--muted);letter-spacing:.06em}
 .hero p.lede{margin:28px 0 0;max-width:30em;font-size:clamp(17px,2.4vw,20px);background:color-mix(in srgb,var(--bg) 82%,transparent);display:inline-block;padding:4px 0}
 
@@ -69,7 +69,7 @@ section{padding-block:72px}
 .studio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:48px;align-items:start}
 .studio h2{font-size:clamp(28px,4vw,38px)}
 .eq{font:400 clamp(40px,7vw,64px)/1.1 var(--display);letter-spacing:-.03em;margin-top:20px}
-.eq b{font-weight:800}
+.eq b{font-weight:800;color:var(--zest)}
 .eq i{font-style:normal;color:var(--thread)}
 .studio-text p{margin:0 0 16px;max-width:36em}
 .studio-text dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 20px;margin:24px 0 0;font-size:15px}
