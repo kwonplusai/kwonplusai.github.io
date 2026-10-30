@@ -3,7 +3,7 @@ const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim
 const SQ=Math.sqrt(3);
 function hexPts(x,y,s){return[...Array(6)].map((_,k)=>{const a=Math.PI/180*(60*k-30);return(x+s*Math.cos(a)).toFixed(1)+","+(y+s*Math.sin(a)).toFixed(1)}).join(" ")}
 
-/* 허니헥스 미니 판: 실제 게임 구역 색 + 꿀벌 7마리 (줄이 겹치지 않는 배치) */
+/* 허니비헥스 미니 판: 실제 게임 구역 색 + 꿀벌 7마리 (줄이 겹치지 않는 배치) */
 (function(){
   const COL=["#f6c445","#f2a0b6","#9fd38a","#f39a5c","#8fc9e8","#c3a6e6","#e8d56b"];
   const M=3,S=19,cells=[];
@@ -16,26 +16,25 @@ function hexPts(x,y,s){return[...Array(6)].map((_,k)=>{const a=Math.PI/180*(60*k
       (isBee(c.q,c.r)?`<g transform="translate(${x},${y})"><ellipse rx="7" ry="5.4" fill="#3b2810"/><path d="M-2.6-5v10M2.2-5v10" stroke="#f6c445" stroke-width="2.2"/><ellipse cx="-2" cy="-6" rx="4" ry="2.6" fill="#fff" opacity=".85"/><ellipse cx="3" cy="-6" rx="4" ry="2.6" fill="#fff" opacity=".85"/></g>`:"")}).join("");
 })();
 
-/* 히어로 벌집 바탕: 마우스·손가락이 지나간 칸이 꿀색으로 차올랐다 빠짐 */
+/* 히어로 베틀 바탕: 날실·씨실이 엇갈려 엮인 천. 손가락·마우스가 지나가면 주황 실이 엮여 들었다 빠짐 */
 (function(){
   const cv=document.getElementById("field");if(!cv)return;const cx=cv.getContext("2d");
   const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
-  let W,H,S=26,cells=[],cell,line,honey,last=performance.now();
+  let W,H,S=18,dots=[],ink,thread,last=performance.now();
   function size(){const r=cv.getBoundingClientRect(),d=devicePixelRatio||1;W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;cx.setTransform(d,0,0,d,0,0);
-    S=W<600?20:26;cells=[];const w=S*SQ,h=S*1.5;
-    for(let row=-1;row*h<H+S;row++)for(let col=-1;col*w<W+w;col++){const x=col*w+(row&1?w/2:0),y=row*h;
-      cells.push({x,y,v:Math.random()<.05?.55:0,base:0})}
-    cells.forEach(c=>{const fx=c.x/W;c.base=fx>.55?Math.max(0,(fx-.55)*.5*Math.random()):0});
+    S=W<600?15:18;dots=[];const rows=Math.ceil(H/S)+1,cols=Math.ceil(W/S)+1,r0=Math.floor(rows*.62);
+    for(let i=0;i<rows;i++)for(let k=0;k<cols;k++){const weft=(i+k)%2===0,x=k*S,y=i*S;
+      dots.push({x,y,weft,v:0,base:weft&&i===r0&&x>W*.42?Math.min(.95,(x/W-.42)*3):0})}
     theme()}
-  function theme(){cell=css("--line");honey=css("--honey")}
-  function hex(x,y,s){cx.beginPath();for(let k=0;k<6;k++){const a=Math.PI/180*(60*k-30);cx[k?"lineTo":"moveTo"](x+s*Math.cos(a),y+s*Math.sin(a))}cx.closePath()}
-  function draw(t){const dt=Math.min(64,t-last);last=t;cx.clearRect(0,0,W,H);
-    for(const c of cells){c.v=Math.max(0,c.v-dt*.0007);hex(c.x,c.y,S-2);
-      cx.strokeStyle=cell;cx.lineWidth=1;cx.stroke();
-      const a=Math.max(c.v,c.base);if(a>.01){cx.globalAlpha=a;cx.fillStyle=honey;cx.fill();cx.globalAlpha=1}}
-    if(!reduce)requestAnimationFrame(draw)}
+  function theme(){ink=css("--ink");thread=css("--thread")}
+  function dash(d,col,a){const L=S*.4;cx.globalAlpha=a;cx.strokeStyle=col;cx.lineWidth=S*.34;cx.beginPath();
+    if(d.weft){cx.moveTo(d.x-L,d.y);cx.lineTo(d.x+L,d.y)}else{cx.moveTo(d.x,d.y-L);cx.lineTo(d.x,d.y+L)}cx.stroke()}
+  function draw(t){const dt=Math.min(64,t-last);last=t;cx.clearRect(0,0,W,H);cx.lineCap="round";
+    for(const d of dots){d.v=Math.max(0,d.v-dt*.0006);dash(d,ink,d.weft?.07:.045);
+      const a=Math.max(d.v,d.base);if(a>.01)dash(d,thread,a)}
+    cx.globalAlpha=1;if(!reduce)requestAnimationFrame(draw)}
   function touch(e){const r=cv.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
-    for(const c of cells){const d=Math.hypot(c.x-x,c.y-y);if(d<S*1.9)c.v=Math.min(.85,c.v+(1-d/(S*1.9))*.9)}
+    for(const d of dots){if(!d.weft)continue;const q=Math.hypot((d.x-x)*.6,(d.y-y)*1.6);if(q<S*1.6)d.v=Math.min(.9,d.v+(1-q/(S*1.6))*.9)}
     if(reduce)draw(performance.now())}
   document.querySelector(".hero").addEventListener("pointermove",touch);
   matchMedia("(prefers-color-scheme:dark)").addEventListener("change",theme);

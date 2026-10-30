@@ -1,11 +1,11 @@
-# Kwon+Ai 사이트 설정
-title: Kwon+Ai
-description: 손에 오래 남는 작은 게임을 만드는 인디 게임 스튜디오
+# Zestloom 사이트 설정
+title: Zestloom
+description: 호기심과 즐거움을 엮어 사람과 생각을 잇는 곳. 게임과 앱을 만들어요.
 lang: ko
 timezone: Asia/Seoul
 contact_email: durihan7901@gmail.com
 # 저장소 이름이 '아이디.github.io'면 비워 두고,
-# 다른 이름(예: kwonai-site)이면 "/kwonai-site" 처럼 적어요.
+# 다른 이름(예: zestloom-site)이면 "/zestloom-site" 처럼 적어요.
 baseurl: ""
 permalink: /news/:year/:month/:day/:title/
 markdown: kramdown
